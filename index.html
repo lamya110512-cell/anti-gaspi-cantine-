@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Anti-Gaspi Vaucluse</title>
+</head>
+<body>
+
+    <h1>Notre Cantine Anti-Gaspillage</h1>
+    <p>Collège du Vaucluse - 700 demi-pensionnaires engagés pour les ODD !</p>
+
+    <hr>
+
+    <h3>Entrez les pesées du jour (en kg) :</h3>
+    
+    <p>Restes alimentaires : <input type="number" id="dechets" placeholder="Ex: 15"></p>
+    <p>Pain gaspillé : <input type="number" id="pain" placeholder="Ex: 3"></p>
+    <p>Fruits entamés : <input type="number" id="fruits" placeholder="Ex: 2"></p>
+    <p>Serviettes papier : <input type="number" id="serviettes" placeholder="Ex: 0.5"></p>
+    <p>Emballages : <input type="number" id="emballages" placeholder="Ex: 1"></p>
+
+    <button onclick="calculerTotal()">Calculer le total</button>
+
+    <hr>
+
+    <h3>Résultats du jour :</h3>
+    <p>Poids total de déchets : <strong><span id="resultatTotal">0</span> kg</strong></p>
+    <p>Moyenne par élève : <strong><span id="resultatMoyenne">0</span> g / élève</strong></p>
+
+    <script>
+    function calculerTotal() {
+        let dechets = parseFloat(document.getElementById('dechets').value) || 0;
+        let pain = parseFloat(document.getElementById('pain').value) || 0;
+        let fruits = parseFloat(document.getElementById('fruits').value) || 0;
+        let serviettes = parseFloat(document.getElementById('serviettes').value) || 0;
+        let emballages = parseFloat(document.getElementById('emballages').value) || 0;
+
+        let total = dechets + pain + fruits + serviettes + emballages;
+        let moyenne = (total / 700) * 1000;
+
+        document.getElementById('resultatTotal').innerText = total.toFixed(2);
+        document.getElementById('resultatMoyenne').innerText = Math.round(moyenne);
+    }
+    </script>
+
+</body>
+</html>
